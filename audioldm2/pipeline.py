@@ -171,7 +171,8 @@ def build_model(ckpt_path=None, config=None, device=None, model_name="audioldm2-
 
     checkpoint = torch.load(resume_from_checkpoint, map_location=device)
 
-    latent_diffusion.load_state_dict(checkpoint["state_dict"])
+    # latent_diffusion.load_state_dict(checkpoint["state_dict"])
+    latent_diffusion.load_state_dict(checkpoint["state_dict"], strict=False)
     
     latent_diffusion.eval()
     latent_diffusion = latent_diffusion.to(device)
